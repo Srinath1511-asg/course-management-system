@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel - EduCart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>Admin Panel</h1>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<section class="add-course">
+  <h2>Add New Course</h2>
+  <form id="courseForm">
+    <input type="text" id="title" placeholder="Course Title" required />
+    <input type="text" id="description" placeholder="enter description" required />
+     <input type="text" id="instructor" placeholder="instructor name" />
+    <input type="text" id="duration" placeholder="Duration 5 Weeks" required />
+    <input type="number" id="price" placeholder="Price 799" required />
+        <input type="text" id="videoUrl" placeholder="url" required />
+    <input type="text" id="imageUrl" placeholder="java.jpg" />
+   
+    <button type="submit">Add Course</button>
+  </form>
+</section>
+
+<script src="course.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Available Courses - EduCart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Available Courses</h1>
+    <nav>
+      <a href="user-courses.html">Courses</a>
+      <a href="enrollment.html">Enroll</a>
+    </nav>
+  </header>
+
+  <section class="courses">
+    <h2>Browse Courses</h2>
+    <div id="course-container" class="course-container">
+      <!-- JS will load courses here -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EduCart. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Fetch courses from backend and display
+    fetch('http://localhost:8080/api/courses')
+      .then(response => response.json())
+      .then(courses => {
+        const container = document.getElementById("course-container");
+        courses.forEach(course => {
+          const courseCard = document.createElement("div");
+          courseCard.className = "course-card";
+          courseCard.innerHTML = `
+            <img src="images/${course.imageUrl}" alt="${course.title}" />
+            <h3>${course.title}</h3>
+            <p>${course.description}</p>
+            <p><strong>Duration:</strong> ${course.duration}</p>
+            <p><strong>Price:</strong> ₹${course.price}</p>
+            <button onclick="enrollNow('${course.title}')">Enroll Now</button>
+          `;
+          container.appendChild(courseCard);
+        });
+      });
+
+    function enrollNow(courseTitle) {
+      window.location.href = `enrollment.html?title=${encodeURIComponent(courseTitle)}`;
+    }
+  </script>
+
+</body>
+</html>
